@@ -22,7 +22,7 @@ import (
 	waLog "go.mau.fi/whatsmeow/util/log"
 	"google.golang.org/protobuf/proto"
 
-	_ "github.com/mattn/go-sqlite3"
+	_ "modernc.org/sqlite"
 )
 
 var (
@@ -36,10 +36,12 @@ var (
 )
 
 func main() {
-	// Load environment variables
-	err := godotenv.Load(".env")
-	if err != nil {
-		log.Printf("Warning: .env file not found: %v", err)
+	// Load environment variables (only locally, Railway provides them directly)
+	if _, err := os.Stat(".env"); err == nil {
+		err := godotenv.Load(".env")
+		if err != nil {
+			log.Printf("Warning: could not load .env file: %v", err)
+		}
 	}
 
 	apiKey := os.Getenv("OPENAI_API_KEY")
