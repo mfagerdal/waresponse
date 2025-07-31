@@ -1,4 +1,4 @@
-module whatsapp-family-responder
+module waresponse
 
 go 1.23.0
 
