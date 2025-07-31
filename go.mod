@@ -6,6 +6,7 @@ toolchain go1.24.5
 
 require (
 	github.com/joho/godotenv v1.5.1
+	github.com/lib/pq v1.10.9
 	github.com/sashabaranov/go-openai v1.40.5
 	go.mau.fi/whatsmeow v0.0.0-20250731124915-c8a3f7009971
 	google.golang.org/protobuf v1.36.6

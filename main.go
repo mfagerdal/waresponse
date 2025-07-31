@@ -22,7 +22,8 @@ import (
 	waLog "go.mau.fi/whatsmeow/util/log"
 	"google.golang.org/protobuf/proto"
 
-	_ "modernc.org/sqlite"
+	_ "github.com/lib/pq"           // PostgreSQL driver for Railway
+	_ "modernc.org/sqlite"          // SQLite driver for local development
 )
 
 var (
@@ -54,7 +55,16 @@ func main() {
 
 	// Initialize WhatsApp client
 	dbLog := waLog.Stdout("Database", "DEBUG", true)
-	container, err := sqlstore.New(context.Background(), "sqlite", "file:whatsapp-bridge/store/whatsapp.db?_foreign_keys=on", dbLog)
+	// Use PostgreSQL if DATABASE_URL is provided, otherwise fallback to SQLite
+	dbURL := os.Getenv("DATABASE_URL")
+	var container sqlstore.Container
+	if dbURL != "" {
+		// Railway PostgreSQL
+		container, err = sqlstore.New(context.Background(), "postgres", dbURL, dbLog)
+	} else {
+		// Local development with SQLite  
+		container, err = sqlstore.New(context.Background(), "sqlite", "file:whatsapp-bridge/store/whatsapp.db?_foreign_keys=on", dbLog)
+	}
 	if err != nil {
 		log.Fatalf("Failed to create store: %v", err)
 	}
