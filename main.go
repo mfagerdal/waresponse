@@ -37,7 +37,7 @@ var (
 
 func main() {
 	// Load environment variables
-	err := godotenv.Load("../.env")
+	err := godotenv.Load(".env")
 	if err != nil {
 		log.Printf("Warning: .env file not found: %v", err)
 	}
@@ -52,7 +52,7 @@ func main() {
 
 	// Initialize WhatsApp client
 	dbLog := waLog.Stdout("Database", "DEBUG", true)
-	container, err := sqlstore.New(context.Background(), "sqlite3", "file:store/whatsapp.db?_foreign_keys=on", dbLog)
+	container, err := sqlstore.New(context.Background(), "sqlite3", "file:whatsapp-bridge/store/whatsapp.db?_foreign_keys=on", dbLog)
 	if err != nil {
 		log.Fatalf("Failed to create store: %v", err)
 	}

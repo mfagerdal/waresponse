@@ -2,10 +2,10 @@
   "$schema": "https://railway.app/railway.schema.json",
   "build": {
     "builder": "NIXPACKS",
-    "buildCommand": "cd whatsapp-bridge && go build -o whatsapp-bot main.go"
+    "buildCommand": "go build -o whatsapp-bot main.go"
   },
   "deploy": {
-    "startCommand": "cd whatsapp-bridge && ./whatsapp-bot",
+    "startCommand": "./whatsapp-bot",
     "restartPolicyType": "ON_FAILURE",
     "restartPolicyMaxRetries": 10
   }
