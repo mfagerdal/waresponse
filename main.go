@@ -57,7 +57,8 @@ func main() {
 	dbLog := waLog.Stdout("Database", "DEBUG", true)
 	// Use PostgreSQL if DATABASE_URL is provided, otherwise fallback to SQLite
 	dbURL := os.Getenv("DATABASE_URL")
-	var container sqlstore.Container
+	var container *sqlstore.Container
+	var err error
 	if dbURL != "" {
 		// Railway PostgreSQL
 		container, err = sqlstore.New(context.Background(), "postgres", dbURL, dbLog)
