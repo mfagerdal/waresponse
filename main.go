@@ -54,7 +54,7 @@ func main() {
 
 	// Initialize WhatsApp client
 	dbLog := waLog.Stdout("Database", "DEBUG", true)
-	container, err := sqlstore.New(context.Background(), "sqlite3", "file:whatsapp-bridge/store/whatsapp.db?_foreign_keys=on", dbLog)
+	container, err := sqlstore.New(context.Background(), "sqlite", "file:whatsapp-bridge/store/whatsapp.db?_foreign_keys=on", dbLog)
 	if err != nil {
 		log.Fatalf("Failed to create store: %v", err)
 	}
