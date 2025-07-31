@@ -1,4 +1,4 @@
-# 🤖 WhatsApp Family Responder
+# 🤖 WAResponse - WhatsApp Family Auto-Responder
 
 This project automatically replies in your WhatsApp **family group** using ChatGPT (GPT-4) via the [whatsmeow](https://github.com/tulir/whatsmeow) Go library, based on the [whatsapp-mcp](https://github.com/lharries/whatsapp-mcp) architecture.
 
@@ -6,11 +6,13 @@ This project automatically replies in your WhatsApp **family group** using ChatG
 
 ## 🚀 Features
 
-- Auto-replies to group messages like "Do you want sushi?"
-- Uses OpenAI's GPT-4 API for smart and fun answers
-- Only replies in groups with names containing `family`
-- Built with Go for reliability and 24/7 deployment
-- Easy to deploy locally or to Railway/Render
+- 🍕 **Food Auto-Replies**: Smart responses to food-related messages using ChatGPT (supports Swedish & English)
+- ⏰ **Auto-Response Timer**: Sends "Jag svarar snart." if you don't reply within 10 seconds
+- 🏠 **Family-Only**: Only responds in groups containing `family` in the name
+- 🌍 **Multi-Language**: Supports Swedish and English trigger words
+- 🚀 **Go-Powered**: Built with Go for reliability and 24/7 deployment
+- ☁️ **Cloud Ready**: Easy deployment to Railway, Render, or any cloud platform
+- 🔧 **Smart Detection**: Distinguishes between your messages and others to avoid conflicts
 
 ---
 
